@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: vincleapi
+  jackson:
+    serialization:
+      indent-output: true
+  jpa:
+    show-sql: true
+    database: POSTGRESQL
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vincle?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: postgres
+    password: root
+    hikari:
+      maximum-pool-size: 5
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  batch:
+    job:
+      enabled: false
+      
+
+server:
+  port: 8081  
