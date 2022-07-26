@@ -26,10 +26,11 @@ public interface ItemMapper {
 			itemDto.setCooling(jpaItem.getCooling());
 			itemDto.setName(jpaItem.getName());
 			itemDto.setClient_id(jpaItem.getClient_id());
-			itemDto.setCreated(jpaItem.getCreated());
+			itemDto.setCreated(jpaItem.getCreated().toString());
 			itemDto.setStatus(jpaItem.getStatus());
-			itemDto.setDeleted(null);
-			itemDto.setUpdated(null);
+			if(jpaItem.getUpdated() != null) {
+				itemDto.setUpdated(jpaItem.getUpdated().toString());
+			}	
 			
 			itemDto.setCapacitys(toCapacityDto(jpaItem.getItemAmount()));
 			itemDto.setPackagings(toPackagingDto(jpaItem.getItemPresentation()));		
@@ -45,8 +46,16 @@ public interface ItemMapper {
 		ItemDto itemDto = new ItemDto();
 		itemDto.setId(optItem.getId());
 		itemDto.setClient_id(optItem.getClient_id());
-		itemDto.setCreated(optItem.getCreated());
-		itemDto.setUpdated(optItem.getUpdated());
+		itemDto.setCreated(optItem.getCreated().toString());
+		if(optItem.getUpdated() != null) {
+			itemDto.setUpdated(optItem.getUpdated().toString());
+		}
+		if(optItem.getDeleted() != null) {
+			itemDto.setDeleted(optItem.getDeleted().toString());
+		}
+		if(optItem.getCreated() != null) {
+			itemDto.setCreated(optItem.getCreated().toString());
+		}
 		itemDto.setPackagings(toPackagingDto(optItem.getItemPresentation()));
 		itemDto.setCapacitys(toCapacityDto(optItem.getItemAmount()));
 		itemDto.setCooling(optItem.getCooling());
