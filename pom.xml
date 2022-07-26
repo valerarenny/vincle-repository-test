@@ -99,6 +99,7 @@
                 </configuration>
             </plugin>
 		</plugins>
+		<finalName>app-items-vincle</finalName>
 	</build>
 
 </project>
